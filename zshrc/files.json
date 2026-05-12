@@ -1,0 +1,126 @@
+{
+  "schema_version": 2,
+  "index_type": "directory-manifest",
+  "summary": {
+    "root": "/home/runner/work/share/share/zshrc",
+    "path": "zshrc",
+    "generated_at": "2026-05-12T22:21:53+00:00",
+    "file_count": 3,
+    "directory_count": 0,
+    "direct_file_count": 3,
+    "direct_directory_count": 0,
+    "total_size": 1424,
+    "total_size_human": "1.4 KB"
+  },
+  "tree": {
+    "type": "directory",
+    "name": "zshrc",
+    "path": "zshrc",
+    "index": "zshrc/files.json",
+    "modified": "2026-05-12T22:21:52+00:00",
+    "children": [
+      {
+        "type": "file",
+        "name": ".zprofile",
+        "path": "zshrc/.zprofile",
+        "extension": "no-extension",
+        "group": "other",
+        "mime_type": null,
+        "size": 399,
+        "size_human": "399 B",
+        "modified": "2026-05-12T22:21:52+00:00",
+        "security": {
+          "private": false,
+          "source": "public"
+        }
+      },
+      {
+        "type": "file",
+        "name": ".zshrc",
+        "path": "zshrc/.zshrc",
+        "extension": "no-extension",
+        "group": "other",
+        "mime_type": null,
+        "size": 867,
+        "size_human": "867 B",
+        "modified": "2026-05-12T22:21:52+00:00",
+        "security": {
+          "private": false,
+          "source": "public"
+        }
+      },
+      {
+        "type": "file",
+        "name": ".zshrc.backup",
+        "path": "zshrc/.zshrc.backup",
+        "extension": "backup",
+        "group": "other",
+        "mime_type": null,
+        "size": 158,
+        "size_human": "158 B",
+        "modified": "2026-05-12T22:21:52+00:00",
+        "security": {
+          "private": false,
+          "source": "public"
+        }
+      }
+    ],
+    "file_count": 3,
+    "directory_count": 0,
+    "total_size": 1424,
+    "total_size_human": "1.4 KB",
+    "security": {
+      "private": false,
+      "source": "public"
+    }
+  },
+  "files": [
+    {
+      "type": "file",
+      "name": ".zprofile",
+      "path": "zshrc/.zprofile",
+      "extension": "no-extension",
+      "group": "other",
+      "mime_type": null,
+      "size": 399,
+      "size_human": "399 B",
+      "modified": "2026-05-12T22:21:52+00:00",
+      "security": {
+        "private": false,
+        "source": "public"
+      }
+    },
+    {
+      "type": "file",
+      "name": ".zshrc",
+      "path": "zshrc/.zshrc",
+      "extension": "no-extension",
+      "group": "other",
+      "mime_type": null,
+      "size": 867,
+      "size_human": "867 B",
+      "modified": "2026-05-12T22:21:52+00:00",
+      "security": {
+        "private": false,
+        "source": "public"
+      }
+    },
+    {
+      "type": "file",
+      "name": ".zshrc.backup",
+      "path": "zshrc/.zshrc.backup",
+      "extension": "backup",
+      "group": "other",
+      "mime_type": null,
+      "size": 158,
+      "size_human": "158 B",
+      "modified": "2026-05-12T22:21:52+00:00",
+      "security": {
+        "private": false,
+        "source": "public"
+      }
+    }
+  ],
+  "child_indexes": [],
+  "errors": []
+}
