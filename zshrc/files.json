@@ -4,7 +4,7 @@
   "summary": {
     "root": "/home/runner/work/share/share/zshrc",
     "path": "zshrc",
-    "generated_at": "2026-05-13T06:46:48+00:00",
+    "generated_at": "2026-05-13T07:06:08+00:00",
     "file_count": 3,
     "directory_count": 0,
     "direct_file_count": 3,
@@ -17,7 +17,7 @@
     "name": "zshrc",
     "path": "zshrc",
     "index": "zshrc/files.json",
-    "modified": "2026-05-13T06:46:47+00:00",
+    "modified": "2026-05-13T07:06:08+00:00",
     "children": [
       {
         "type": "file",
@@ -28,7 +28,7 @@
         "mime_type": null,
         "size": 399,
         "size_human": "399 B",
-        "modified": "2026-05-13T06:46:47+00:00",
+        "modified": "2026-05-13T07:06:08+00:00",
         "security": {
           "private": false,
           "source": "public"
@@ -43,7 +43,7 @@
         "mime_type": null,
         "size": 867,
         "size_human": "867 B",
-        "modified": "2026-05-13T06:46:47+00:00",
+        "modified": "2026-05-13T07:06:08+00:00",
         "security": {
           "private": false,
           "source": "public"
@@ -58,7 +58,7 @@
         "mime_type": null,
         "size": 158,
         "size_human": "158 B",
-        "modified": "2026-05-13T06:46:47+00:00",
+        "modified": "2026-05-13T07:06:08+00:00",
         "security": {
           "private": false,
           "source": "public"
@@ -84,7 +84,7 @@
       "mime_type": null,
       "size": 399,
       "size_human": "399 B",
-      "modified": "2026-05-13T06:46:47+00:00",
+      "modified": "2026-05-13T07:06:08+00:00",
       "security": {
         "private": false,
         "source": "public"
@@ -99,7 +99,7 @@
       "mime_type": null,
       "size": 867,
       "size_human": "867 B",
-      "modified": "2026-05-13T06:46:47+00:00",
+      "modified": "2026-05-13T07:06:08+00:00",
       "security": {
         "private": false,
         "source": "public"
@@ -114,7 +114,7 @@
       "mime_type": null,
       "size": 158,
       "size_human": "158 B",
-      "modified": "2026-05-13T06:46:47+00:00",
+      "modified": "2026-05-13T07:06:08+00:00",
       "security": {
         "private": false,
         "source": "public"
