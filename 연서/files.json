@@ -4,20 +4,20 @@
   "summary": {
     "root": "/home/runner/work/share/share/연서",
     "path": "연서",
-    "generated_at": "2026-05-12T22:21:53+00:00",
-    "file_count": 1,
+    "generated_at": "2026-05-13T06:00:02+00:00",
+    "file_count": 2,
     "directory_count": 0,
-    "direct_file_count": 1,
+    "direct_file_count": 2,
     "direct_directory_count": 0,
-    "total_size": 1791,
-    "total_size_human": "1.7 KB"
+    "total_size": 2511,
+    "total_size_human": "2.5 KB"
   },
   "tree": {
     "type": "directory",
     "name": "연서",
     "path": "연서",
     "index": "연서/files.json",
-    "modified": "2026-05-12T22:21:52+00:00",
+    "modified": "2026-05-13T06:00:01+00:00",
     "children": [
       {
         "type": "file",
@@ -28,17 +28,32 @@
         "mime_type": "text/markdown",
         "size": 1791,
         "size_human": "1.7 KB",
-        "modified": "2026-05-12T22:21:52+00:00",
+        "modified": "2026-05-13T06:00:01+00:00",
+        "security": {
+          "private": false,
+          "source": "public"
+        }
+      },
+      {
+        "type": "file",
+        "name": "외대부고_연서_캠프신청_스크립트.md",
+        "path": "연서/외대부고_연서_캠프신청_스크립트.md",
+        "extension": "md",
+        "group": "text",
+        "mime_type": "text/markdown",
+        "size": 720,
+        "size_human": "720 B",
+        "modified": "2026-05-13T06:00:01+00:00",
         "security": {
           "private": false,
           "source": "public"
         }
       }
     ],
-    "file_count": 1,
+    "file_count": 2,
     "directory_count": 0,
-    "total_size": 1791,
-    "total_size_human": "1.7 KB",
+    "total_size": 2511,
+    "total_size_human": "2.5 KB",
     "security": {
       "private": false,
       "source": "public"
@@ -54,7 +69,22 @@
       "mime_type": "text/markdown",
       "size": 1791,
       "size_human": "1.7 KB",
-      "modified": "2026-05-12T22:21:52+00:00",
+      "modified": "2026-05-13T06:00:01+00:00",
+      "security": {
+        "private": false,
+        "source": "public"
+      }
+    },
+    {
+      "type": "file",
+      "name": "외대부고_연서_캠프신청_스크립트.md",
+      "path": "연서/외대부고_연서_캠프신청_스크립트.md",
+      "extension": "md",
+      "group": "text",
+      "mime_type": "text/markdown",
+      "size": 720,
+      "size_human": "720 B",
+      "modified": "2026-05-13T06:00:01+00:00",
       "security": {
         "private": false,
         "source": "public"
