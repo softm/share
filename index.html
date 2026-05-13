@@ -145,9 +145,33 @@
             background-color: #fff;
             padding: 20px 0 12px;
         }
+        .list-header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
         .list-header h1 {
             margin-top: 0;
             margin-bottom: 12px;
+        }
+        .mobile-panel-toggle {
+            display: none;
+            border: 1px solid #d8e0ec;
+            border-radius: 999px;
+            background: #fff;
+            color: #0b63d1;
+            cursor: pointer;
+            font: inherit;
+            font-size: 0.86em;
+            font-weight: 800;
+            min-height: 36px;
+            padding: 6px 12px;
+            white-space: nowrap;
+        }
+        .mobile-panel-toggle:focus-visible {
+            outline: 3px solid rgba(11, 99, 209, 0.28);
+            outline-offset: 2px;
         }
         .left-menu-tabs {
             display: grid;
@@ -1363,6 +1387,37 @@
             opacity: 0.45;
             cursor: default;
         }
+        .directory-viewer-fullscreen-button,
+        .document-viewer-fullscreen-button {
+            font-weight: 700;
+        }
+        .directory-viewer:fullscreen,
+        .directory-viewer.is-pseudo-fullscreen,
+        .directory-viewer-pane:fullscreen {
+            width: 100vw;
+            height: 100vh;
+            padding: 10px;
+            box-sizing: border-box;
+            background: #fff;
+        }
+        .directory-viewer.is-pseudo-fullscreen {
+            position: fixed;
+            inset: 0;
+            z-index: 5000;
+        }
+        .directory-viewer:fullscreen,
+        .directory-viewer.is-pseudo-fullscreen {
+            grid-template-columns: minmax(0, 1fr) 160px;
+            gap: 10px;
+        }
+        .directory-viewer:fullscreen .directory-viewer-content,
+        .directory-viewer.is-pseudo-fullscreen .directory-viewer-content,
+        .directory-viewer-pane:fullscreen {
+            border-radius: 0;
+        }
+        .directory-viewer-pane:fullscreen iframe {
+            min-height: calc(100vh - 54px);
+        }
         .directory-viewer-counter {
             min-width: 64px;
             text-align: center;
@@ -1578,59 +1633,195 @@
         }
 
         @media (max-width: 768px) {
+            html {
+                height: auto;
+            }
+            body {
+                height: auto;
+                min-height: 100dvh;
+                overflow-x: hidden;
+                line-height: 1.42;
+                font-size: 14px;
+            }
+            nav {
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                gap: 12px;
+                overflow-x: auto;
+                padding: 7px 10px;
+                scrollbar-width: none;
+            }
+            nav::-webkit-scrollbar {
+                display: none;
+            }
+            nav a {
+                margin-right: 0;
+                flex: 0 0 auto;
+                font-size: 0.9em;
+            }
             .container {
-                flex-direction: column;
+                display: block;
+                overflow: visible;
+                min-height: 0;
             }
             #file-list {
                 width: 100%;
                 border-right: none;
-                border-bottom: 1px solid #ccc;
-                overflow-y: auto; /* Ensure scrollability */
-                height: 100%; /* Fill the container height */
+                border-bottom: 1px solid #d8dee9;
+                padding: 0 8px 8px;
+                overflow: visible;
+                height: auto;
+                max-height: none;
+                background: #fff;
             }
             .container.mobile-content-visible #file-list {
-                height: 50vh; /* Occupy top half when content is visible */
+                max-height: 34dvh;
+                overflow-y: auto;
+                overscroll-behavior: contain;
+            }
+            .container.mobile-content-visible.mobile-sidebar-collapsed #file-list {
+                max-height: 46px;
+                overflow: hidden;
+                padding-bottom: 0;
+            }
+            .list-header {
+                padding: 7px 0 6px;
+            }
+            .list-header-top {
+                position: sticky;
+                top: 0;
+                z-index: 4;
+                background: #fff;
+                padding-bottom: 5px;
+            }
+            .list-header h1 {
+                margin-bottom: 0;
+                border-bottom: 0;
+                font-size: 1.05rem;
+                line-height: 1.25;
+            }
+            .mobile-panel-toggle {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 30px;
+                padding: 4px 9px;
+                font-size: 0.82em;
+            }
+            .left-menu-tabs {
+                gap: 3px;
+                margin-bottom: 7px;
+                padding: 3px;
+                border-radius: 10px;
+            }
+            .left-menu-tab {
+                min-height: 32px;
+                padding: 5px 8px;
+                font-size: 0.9em;
+            }
+            #searchInput,
+            #mainDirectorySearchInput {
+                min-height: 36px;
+                padding: 7px 9px;
+                border-radius: 9px;
+            }
+            .search-controls {
+                gap: 7px;
+            }
+            .search-option {
+                font-size: 0.84em;
+            }
+            #attachment-filter-options,
+            .extension-options {
+                gap: 5px;
+            }
+            .extension-option {
+                min-height: 24px;
+                padding: 0 7px;
+            }
+            .container.mobile-sidebar-collapsed .left-menu-tabs,
+            .container.mobile-sidebar-collapsed .left-tab-panel,
+            .container.mobile-sidebar-collapsed .left-result-list {
+                display: none !important;
             }
             #file-content {
-                display: none; /* Hide by default on mobile */
-                padding: 15px;
-                max-height: 50vh;
-                overflow: hidden;
+                display: none;
+                padding: 6px;
+                max-height: none;
+                overflow: visible;
+                min-height: 0;
             }
             .loaded-filter-panel {
-                margin-bottom: 10px;
+                margin-bottom: 6px;
+                padding: 6px;
+                border-radius: 8px;
             }
             .loaded-filter-chips {
                 flex-wrap: nowrap;
                 overflow-x: auto;
                 overflow-y: hidden;
                 max-height: none;
+                gap: 5px;
             }
             .container.mobile-content-visible #file-content {
-                display: flex; /* Show when a file is selected */
-            }
-            nav {
-                justify-content: center;
+                display: flex;
             }
             .share-buttons {
                 justify-content: flex-start;
+                gap: 6px;
             }
             .share-button {
-                width: 44px;
+                width: 38px;
+                min-height: 34px;
             }
             .directory-browser-toolbar {
-                align-items: flex-start;
+                position: sticky;
+                top: 0;
+                z-index: 3;
+                align-items: stretch;
                 flex-direction: column;
+                gap: 6px;
+                padding: 7px;
             }
-            .view-mode-control {
+            .directory-browser-title span {
+                font-size: 0.9em;
+                white-space: normal;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
+            .directory-browser-title strong {
+                font-size: 0.82em;
+            }
+            .directory-browser-actions {
                 width: 100%;
                 justify-content: space-between;
+                gap: 5px;
+            }
+            .view-mode-control {
+                flex: 1 1 auto;
+                min-width: 0;
+                justify-content: space-between;
+                padding: 2px;
             }
             .view-mode-button {
                 flex: 1 1 auto;
+                min-width: 30px;
+                height: 28px;
+            }
+            .view-mode-button svg,
+            .preview-toggle-button svg {
+                width: 18px;
+                height: 18px;
+            }
+            .preview-toggle-button {
+                width: 32px;
+                height: 28px;
             }
             .directory-browser[data-view-mode="list"] .directory-item {
-                grid-template-columns: 40px minmax(0, 1fr);
+                grid-template-columns: 34px minmax(0, 1fr);
+                gap: 8px;
+                padding: 6px 7px;
             }
             .directory-browser[data-view-mode="list"] .directory-item-meta {
                 grid-column: 2;
@@ -1638,24 +1829,167 @@
             }
             .directory-browser-layout,
             .directory-browser[data-view-mode="gallery"] .directory-browser-layout {
-                grid-template-columns: 1fr;
+                display: flex;
+                flex-direction: column;
+                overflow: visible;
             }
             .directory-splitter {
                 display: none;
+            }
+            .directory-browser {
+                margin-top: 6px;
+                min-height: 76dvh;
+                overflow: visible;
+                border-radius: 7px;
+            }
+            .directory-items {
+                max-height: none;
+                overflow: visible;
+                padding: 6px;
+            }
+            .directory-browser[data-view-mode="grid"] .directory-items {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 6px;
+            }
+            .directory-browser[data-view-mode="grid"] .directory-item {
+                min-height: 104px;
+                gap: 6px;
+                padding: 8px 5px;
+            }
+            .directory-browser[data-view-mode="grid"] .directory-item-icon {
+                width: 46px;
+                height: 46px;
+                border-radius: 10px;
+            }
+            .directory-browser[data-view-mode="grid"] .directory-folder-icon svg {
+                width: 46px;
+                height: 36px;
+            }
+            .directory-item-name {
+                font-size: 0.88em;
+            }
+            .directory-item-meta {
+                margin-top: 2px;
+                font-size: 0.74em;
+            }
+            .directory-browser[data-view-mode="columns"] .directory-items {
+                min-height: 0;
+                overflow-x: auto;
+            }
+            .directory-column {
+                flex-basis: 236px;
+                min-width: 220px;
+                padding: 5px;
+            }
+            .directory-column .directory-item {
+                grid-template-columns: 30px minmax(0, 1fr) 16px;
+                gap: 7px;
+                padding: 6px;
+            }
+            .directory-column .directory-item-icon {
+                width: 28px;
+                height: 28px;
             }
             .directory-preview-mount,
             .directory-browser[data-view-mode="gallery"] .directory-preview-mount {
                 border-left: 0;
                 border-top: 1px solid #e5e9f0;
+                max-height: none;
+                overflow: visible;
+            }
+            .directory-preview {
+                padding: 6px;
+            }
+            .directory-preview-visual {
+                min-height: 180px;
+            }
+            .directory-browser[data-view-mode="gallery"] .directory-preview {
+                height: auto;
+                display: flex;
+                flex-direction: column;
+            }
+            .directory-browser[data-view-mode="gallery"] .directory-preview-visual {
+                min-height: 190px;
+            }
+            .directory-browser[data-view-mode="gallery"] .directory-items {
+                order: 2;
+                padding: 6px;
+                gap: 6px;
             }
             .directory-viewer {
                 grid-template-columns: 1fr;
+                gap: 6px;
+            }
+            .directory-viewer:fullscreen {
+                grid-template-columns: 1fr;
+                padding: 6px;
+            }
+            .directory-viewer.is-pseudo-fullscreen {
+                grid-template-columns: 1fr;
+                padding: 6px;
+            }
+            .directory-viewer:fullscreen .directory-viewer-rail,
+            .directory-viewer.is-pseudo-fullscreen .directory-viewer-rail {
+                display: none;
             }
             .directory-viewer-rail {
-                max-height: 180px;
+                max-height: none;
+                display: flex;
+                overflow-x: auto;
+                overflow-y: hidden;
+                gap: 6px;
+                padding: 6px;
+            }
+            .directory-viewer-thumb {
+                flex: 0 0 112px;
+                padding: 6px;
+            }
+            .directory-viewer-thumb .file-badge,
+            .directory-viewer-thumb img {
+                width: 34px;
+                height: 34px;
+                border-radius: 7px;
+            }
+            .directory-viewer-nav {
+                gap: 8px;
+                padding-bottom: 6px;
+            }
+            .directory-viewer-nav button {
+                padding: 4px 9px;
+                font-size: 0.9em;
+            }
+            .directory-viewer-content {
+                border-radius: 7px;
             }
             #document-viewer {
-                min-height: 260px;
+                min-height: 220px;
+            }
+            .markdown-viewer {
+                padding: 12px;
+                font-size: 14px;
+                line-height: 1.55;
+            }
+            .markdown-source-toolbar {
+                padding: 6px;
+                gap: 5px;
+            }
+            .markdown-source-toolbar button {
+                padding: 4px 8px;
+                font-size: 0.82em;
+            }
+            .markdown-source-code {
+                padding: 10px;
+                font-size: 12px;
+                line-height: 1.5;
+            }
+            #scrollTopBtn {
+                right: 10px;
+                bottom: 10px;
+                width: 44px;
+                height: 44px;
+                border-radius: 12px;
+                font-size: 0.78em;
+                padding: 0;
             }
             .lg-current img,
             .lg-current video {
@@ -1663,6 +1997,36 @@
                 max-height: 100vh !important;
                 width: auto !important;
                 height: auto !important;
+            }
+        }
+        @media (max-width: 420px) {
+            body {
+                font-size: 13px;
+            }
+            nav {
+                gap: 10px;
+                padding: 6px 8px;
+            }
+            #file-list {
+                padding-left: 6px;
+                padding-right: 6px;
+            }
+            #file-content {
+                padding: 4px;
+            }
+            .directory-browser[data-view-mode="grid"] .directory-items {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .directory-browser[data-view-mode="grid"] .directory-item {
+                min-height: 96px;
+            }
+            .directory-browser[data-view-mode="grid"] .directory-item-icon {
+                width: 42px;
+                height: 42px;
+            }
+            .directory-browser[data-view-mode="grid"] .directory-folder-icon svg {
+                width: 42px;
+                height: 32px;
             }
         }
     </style>
@@ -1679,7 +2043,10 @@
     <div class="container">
         <div id="file-list">
             <div class="list-header">
-                <h1>메인</h1>
+                <div class="list-header-top">
+                    <h1>메인</h1>
+                    <button type="button" id="mobilePanelToggle" class="mobile-panel-toggle" aria-expanded="true" aria-controls="mainDirectoryPanel searchPanel mainDirectories files">탐색 접기</button>
+                </div>
                 <div class="left-menu-tabs" role="tablist" aria-label="왼쪽 메뉴">
                     <button type="button" class="left-menu-tab is-active" data-left-tab="main" role="tab" aria-selected="true" aria-controls="mainDirectoryPanel">메인</button>
                     <button type="button" class="left-menu-tab" data-left-tab="search" role="tab" aria-selected="false" aria-controls="searchPanel">검색</button>
@@ -1690,7 +2057,7 @@
                 <div id="searchPanel" class="search-controls left-tab-panel left-hidden" role="tabpanel">
                     <input type="text" id="searchInput" onkeyup="searchFiles()" placeholder="파일 검색...">
                     <label class="search-option">
-                        <input type="checkbox" id="titleOnlyCheckbox" checked onchange="searchFiles()">
+                        <input type="checkbox" id="titleOnlyCheckbox" onchange="searchFiles()">
                         디렉토리만 검색
                     </label>
                     <div id="attachment-filter-options">
@@ -1741,10 +2108,10 @@
         </div>
     </div>
 
-    <script src="lib/attachment-utils.js?v=20260510-office-viewer"></script>
-    <script src="lib/files-index-utils.js?v=20260510-office-viewer"></script>
-    <script src="lib/document-viewer.js?v=20260510-office-viewer"></script>
-    <script src="lib/index-page.js?v=20260510-office-viewer"></script>
+    <script src="https://softm.github.io/gitpages-explorer/lib/attachment-utils.js?v=20260513-mobile-fullscreen2"></script>
+    <script src="https://softm.github.io/gitpages-explorer/lib/files-index-utils.js?v=20260513-mobile-fullscreen2"></script>
+    <script src="https://softm.github.io/gitpages-explorer/lib/document-viewer.js?v=20260513-mobile-fullscreen2"></script>
+    <script src="https://softm.github.io/gitpages-explorer/lib/index-page.js?v=20260513-mobile-fullscreen2"></script>
     <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/lightgallery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/video/lg-video.min.js"></script>
     <button onclick="scrollToTop()" id="scrollTopBtn" title="Go to top">TOP</button>
