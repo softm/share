@@ -610,15 +610,27 @@
         }
         .markdown-viewer h1,
         .markdown-viewer h2,
-        .markdown-viewer h3 {
+        .markdown-viewer h3,
+        .markdown-viewer h4,
+        .markdown-viewer h5,
+        .markdown-viewer h6 {
             margin: 1.2em 0 0.55em;
             border-bottom: 1px solid #e5e7eb;
             padding-bottom: 0.25em;
         }
         .markdown-viewer h1:first-child,
         .markdown-viewer h2:first-child,
-        .markdown-viewer h3:first-child {
+        .markdown-viewer h3:first-child,
+        .markdown-viewer h4:first-child,
+        .markdown-viewer h5:first-child,
+        .markdown-viewer h6:first-child {
             margin-top: 0;
+        }
+        .markdown-viewer h4,
+        .markdown-viewer h5,
+        .markdown-viewer h6 {
+            border-bottom: 0;
+            padding-bottom: 0;
         }
         .markdown-viewer p { margin: 0.7em 0; }
         .markdown-viewer ul,
@@ -626,6 +638,9 @@
             margin: 0.7em 0;
             padding-left: 1.5em;
             list-style: revert;
+        }
+        .markdown-viewer li input[type="checkbox"] {
+            margin-right: 0.4em;
         }
         .markdown-viewer pre {
             overflow: auto;
@@ -798,12 +813,15 @@
             flex-shrink: 0;
             display: flex;
             justify-content: flex-end;
+            align-items: center;
+            flex-wrap: wrap;
             gap: 8px;
             padding: 10px;
             border-bottom: 1px solid #dde3ed;
             background: #f7f9fc;
         }
-        .markdown-source-toolbar button {
+        .markdown-source-toolbar button,
+        .markdown-source-toolbar a {
             border: 1px solid #ccd3df;
             border-radius: 999px;
             background: #fff;
@@ -812,11 +830,28 @@
             padding: 6px 12px;
             font: inherit;
             font-size: 0.9em;
+            text-decoration: none;
         }
-        .markdown-source-toolbar button[aria-pressed="true"] {
+        .markdown-source-toolbar button[aria-pressed="true"],
+        .markdown-source-toolbar a[aria-pressed="true"] {
             background: #4b5563;
             border-color: #4b5563;
             color: #fff;
+        }
+        .markdown-source-toolbar button:disabled {
+            cursor: default;
+            opacity: 1;
+        }
+        .source-language-label {
+            margin-right: auto;
+            border: 1px solid #d8e0ec;
+            border-radius: 999px;
+            padding: 4px 9px;
+            background: #eef4ff;
+            color: #344054;
+            font-size: 0.76em;
+            font-weight: 800;
+            letter-spacing: 0;
         }
         .markdown-source-preview {
             flex: 1 1 auto;
@@ -842,7 +877,59 @@
             font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
             font-size: 13px;
             line-height: 1.6;
+            white-space: pre;
+        }
+        .source-code-block {
+            tab-size: 4;
+        }
+        .source-code-block.is-wrapped {
             white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+        .source-line {
+            display: grid;
+            grid-template-columns: 3.4em minmax(0, 1fr);
+            min-width: max-content;
+        }
+        .source-code-block.is-wrapped .source-line {
+            min-width: 0;
+        }
+        .source-line-number {
+            user-select: none;
+            padding-right: 14px;
+            color: #64748b;
+            text-align: right;
+        }
+        .source-code-block:not(.has-line-numbers) .source-line {
+            display: block;
+        }
+        .source-code-block:not(.has-line-numbers) .source-line-number {
+            display: none;
+        }
+        .source-line-code {
+            min-width: 0;
+        }
+        .syntax-keyword { color: #93c5fd; font-weight: 700; }
+        .syntax-string { color: #86efac; }
+        .syntax-number { color: #fbbf24; }
+        .syntax-comment { color: #94a3b8; font-style: italic; }
+        .syntax-function { color: #c4b5fd; }
+        .syntax-constant { color: #fca5a5; }
+        .syntax-property,
+        .syntax-attribute { color: #67e8f9; }
+        .syntax-tag { color: #f0abfc; }
+        @media (max-width: 700px) {
+            .source-language-label {
+                width: 100%;
+                margin-right: 0;
+                box-sizing: border-box;
+            }
+            .source-line {
+                grid-template-columns: 2.8em minmax(0, 1fr);
+            }
+            .source-line-number {
+                padding-right: 10px;
+            }
         }
         .directory-viewer-fallback {
             display: flex;
@@ -1348,10 +1435,11 @@
         </div>
       </div>
     </div>
-    <script src="https://softm.github.io/gitpages-explorer/lib/attachment-utils.js?v=20260513-search-shortcut"></script>
-    <script src="https://softm.github.io/gitpages-explorer/lib/files-index-utils.js?v=20260513-search-shortcut"></script>
-    <script src="https://softm.github.io/gitpages-explorer/lib/document-viewer.js?v=20260513-search-shortcut"></script>
-    <script src="https://softm.github.io/gitpages-explorer/lib/dataroom-page.js?v=20260513-search-shortcut"></script>
+    <script src="https://softm.github.io/gitpages-explorer/lib/attachment-utils.js?v=20260513-generic-source"></script>
+    <script src="https://softm.github.io/gitpages-explorer/lib/files-index-utils.js?v=20260513-generic-source"></script>
+    <script src="https://softm.github.io/gitpages-explorer/lib/document-viewer.js?v=20260513-generic-source"></script>
+    <script src="https://softm.github.io/gitpages-explorer/lib/source-viewer-utils.js?v=20260513-source-highlight"></script>
+    <script src="https://softm.github.io/gitpages-explorer/lib/dataroom-page.js?v=20260513-source-highlight"></script>
     <script>
         function navigateWithSearch(event, target) {
             event.preventDefault();
